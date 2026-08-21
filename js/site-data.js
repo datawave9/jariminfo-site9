@@ -75,7 +75,7 @@ const SITE = {
      --------------------------------------------------------------- */
   kakaoTalk: {
     label: '카카오톡상담',
-    url: 'http://pf.kakao.com/_xaxdxlSX',
+    url: 'http://pf.kakao.com/_ICjiX',
   },
 
   quickForm: {
