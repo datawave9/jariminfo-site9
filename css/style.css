@@ -31,6 +31,7 @@ body {
   color: var(--ink);
   background: var(--paper);
   line-height: 1.65;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -813,6 +814,7 @@ button { font-family: inherit; cursor: pointer; }
   color: rgba(255,255,255,0.55);
   padding: 52px 0 34px;
   font-size: 13px;
+  letter-spacing: -0.01em;
 }
 .footer-top {
   display: flex;
@@ -832,15 +834,14 @@ button { font-family: inherit; cursor: pointer; }
 .footer-policy-nav { display: flex; gap: 18px; flex-wrap: wrap; }
 .footer-policy-nav a { color: rgba(255,255,255,0.72); font-size: 12.5px; text-decoration: underline; text-underline-offset: 3px; }
 .footer-policy-nav a:hover { color: var(--white); }
-.footer-assurance, .footer-copyright-notice { margin: 10px 0 0; color: rgba(255,255,255,0.45); font-size: 12px; line-height: 1.7; }
-.footer-copyright-notice { margin-top: 4px; }
+.footer-copyright-notice { margin: 10px 0 0; color: rgba(255,255,255,0.45); font-size: 12px; line-height: 1.7; }
 .footer-meta {
-  margin-top: 22px;
-  line-height: 2.1;
-  font-size: 16.5px;
+  margin-top: 18px;
+  line-height: 1.9;
+  font-size: 13.5px;
 }
-.footer-meta span { display: inline-block; margin-right: 20px; }
-.footer-copy { margin-top: 20px; color: rgba(255,255,255,0.35); font-size: 14.5px; }
+.footer-meta span { display: inline-block; margin-right: 18px; }
+.footer-copy { margin-top: 18px; color: rgba(255,255,255,0.35); font-size: 12.5px; line-height: 1.7; }
 
 /* -------------------- 반응형 -------------------- */
 @media (max-width: 900px) {

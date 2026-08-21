@@ -76,7 +76,6 @@ function renderFooter() {
         </div>
         <div class="footer-policies">
           <nav class="footer-policy-nav" aria-label="정책 및 고지">${footerPolicyNav}</nav>
-          <p class="footer-assurance">${f.safetyNotice}</p>
           <p class="footer-copyright-notice">${f.copyrightNotice}</p>
         </div>
         <div class="footer-copy">© ${c.copyrightYear} ${c.name}. All Rights Reserved. · 취급 브랜드 iPECS(舊 에릭슨엘지 엔터프라이즈)는 각 사의 상표입니다.</div>
