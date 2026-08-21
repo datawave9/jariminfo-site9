@@ -71,10 +71,10 @@ function renderFooter() {
             </div>
             <div class="footer-meta footer-meta--compact footer-address"><span>${c.address}</span></div>
           </div>
-          <nav class="footer-policy-nav" aria-label="정책 및 고지">${footerPolicyNav}</nav>
         </div>
         <div class="footer-bottom">
           <p class="footer-copyright-notice">${f.copyrightNotice}</p>
+          <nav class="footer-policy-nav" aria-label="정책 및 고지">${footerPolicyNav}</nav>
           <div class="footer-copy">© ${c.copyrightYear} ${c.name}. All Rights Reserved. · 취급 브랜드 iPECS(舊 에릭슨엘지 엔터프라이즈)는 각 사의 상표입니다.</div>
         </div>
       </div>
