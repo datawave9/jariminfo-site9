@@ -211,7 +211,7 @@ const SITE = {
       {
         icon: 'cpu',
         category: '펌웨어',
-        title: '펌웨어 자료',
+        title: '펌웨어 자료실',
         desc: '펌웨어 게시 자료',
         href: 'assets/firmware/',
         type: 'folder',
