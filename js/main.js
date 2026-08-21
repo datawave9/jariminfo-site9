@@ -741,22 +741,19 @@ function renderFloatingCtaAndModal() {
           <div class="qf-privacy-box">
             <label class="qf-consent">
               <input type="checkbox" name="privacyConsent" value="yes" required>
-              <span><strong>[필수]</strong> 개인정보 수집·이용에 동의합니다.</span>
+              <span><strong>[필수]</strong> ${q.privacy.consentLabel}</span>
             </label>
-            <label class="qf-consent qf-overseas-consent">
-              <input type="checkbox" name="overseasTransferConsent" value="yes" required>
-              <span><strong>[필수]</strong> 개인정보의 국외 이전·처리에 동의합니다.<br><small>${q.privacy.overseas}</small></span>
-            </label>
+            <p class="qf-privacy-summary">${q.privacy.summary}</p>
             <details class="qf-privacy-details">
-              <summary>개인정보 수집·이용 내용 자세히 보기</summary>
+              <summary>개인정보 처리 내용 자세히 보기</summary>
               <dl>
                 <div><dt>수집 항목</dt><dd>${q.privacy.items}</dd></div>
                 <div><dt>수집 목적</dt><dd>${q.privacy.purpose}</dd></div>
                 <div><dt>보유 기간</dt><dd>${q.privacy.retention}</dd></div>
                 <div><dt>처리 위탁</dt><dd>${q.privacy.processor}</dd></div>
-                <div><dt>국외 처리</dt><dd>${q.privacy.overseas}</dd></div>
+                <div><dt>처리 안내</dt><dd>${q.privacy.overseas}</dd></div>
               </dl>
-              <p>동의하지 않을 권리가 있으며, 동의하지 않으면 온라인 상담 신청을 이용할 수 없습니다. 전화 상담은 <a href="tel:${f.phone}">${f.phone}</a>으로 가능합니다.</p>
+              <p>상담 접수 과정에서 Formspree, Inc.의 미국 AWS 인프라를 통해 개인정보가 처리될 수 있습니다. 동의하지 않을 권리가 있으며, 동의하지 않으면 온라인 상담 신청을 이용할 수 없습니다. 전화 상담은 <a href="tel:${f.phone}">${f.phone}</a>으로 가능합니다.</p>
               <a class="qf-policy-link" href="${q.privacy.policyHref}" target="_blank" rel="noopener">개인정보처리방침 전문 보기 ↗</a>
             </details>
           </div>
@@ -798,16 +795,10 @@ async function handleQuickFormSubmit(e) {
   const q = SITE.quickForm;
   const originalLabel = btn.textContent;
   const consent = form.querySelector('input[name="privacyConsent"]');
-  const overseasConsent = form.querySelector('input[name="overseasTransferConsent"]');
 
   if (!consent || !consent.checked) {
-    alert('상담 신청을 위해 개인정보 수집·이용 동의가 필요합니다.');
+    alert('상담 신청을 위해 개인정보 처리 안내에 동의해 주세요.');
     if (consent) consent.focus();
-    return;
-  }
-  if (!overseasConsent || !overseasConsent.checked) {
-    alert('상담 신청을 위해 개인정보의 국외 이전·처리 동의가 필요합니다.');
-    if (overseasConsent) overseasConsent.focus();
     return;
   }
 
