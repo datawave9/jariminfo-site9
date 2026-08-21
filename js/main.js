@@ -48,13 +48,16 @@ function renderFooter() {
   const mount = document.getElementById('site-footer-mount');
   if (!mount) return;
   const c = SITE.company;
+  const f = SITE.footer;
   const navHtml = SITE.nav.map(i => `<a href="${i.href}">${i.label}</a>`).join('');
+  const footerMainNav = navHtml;
+  const footerPolicyNav = `<a href="privacy.html">개인정보처리방침</a><a href="email-collection-refusal.html">이메일무단수집거부</a><a href="safety.html">안전·윤리·인권 선언</a>`;
 
   mount.innerHTML = `
     <footer class="site-footer">
       <div class="wrap">
         <div class="footer-top">
-          <div>
+          <div class="footer-company">
             <div class="footer-brand">자림인포시스템<span class="dot">(주)</span></div>
             <div class="footer-meta">
               <span>대표이사 ${c.ceo}</span>
@@ -69,7 +72,12 @@ function renderFooter() {
               <span>${c.hours}</span>
             </div>
           </div>
-          <nav class="footer-nav">${navHtml}</nav>
+          <nav class="footer-nav footer-nav--primary" aria-label="주요 메뉴">${footerMainNav}</nav>
+        </div>
+        <div class="footer-policies">
+          <nav class="footer-policy-nav" aria-label="정책 및 고지">${footerPolicyNav}</nav>
+          <p class="footer-assurance">${f.safetyNotice}</p>
+          <p class="footer-copyright-notice">${f.copyrightNotice}</p>
         </div>
         <div class="footer-copy">© ${c.copyrightYear} ${c.name}. All Rights Reserved. · 취급 브랜드 iPECS(舊 에릭슨엘지 엔터프라이즈)는 각 사의 상표입니다.</div>
       </div>
@@ -730,6 +738,28 @@ function renderFloatingCtaAndModal() {
             <label>문의 내용</label>
             <textarea name="message" rows="3" placeholder="설치 규모, 희망 시기 등을 남겨주시면 더 정확한 상담이 가능합니다"></textarea>
           </div>
+          <div class="qf-privacy-box">
+            <label class="qf-consent">
+              <input type="checkbox" name="privacyConsent" value="yes" required>
+              <span><strong>[필수]</strong> 개인정보 수집·이용에 동의합니다.</span>
+            </label>
+            <label class="qf-consent qf-overseas-consent">
+              <input type="checkbox" name="overseasTransferConsent" value="yes" required>
+              <span><strong>[필수]</strong> 개인정보의 국외 이전·처리에 동의합니다.<br><small>${q.privacy.overseas}</small></span>
+            </label>
+            <details class="qf-privacy-details">
+              <summary>개인정보 수집·이용 내용 자세히 보기</summary>
+              <dl>
+                <div><dt>수집 항목</dt><dd>${q.privacy.items}</dd></div>
+                <div><dt>수집 목적</dt><dd>${q.privacy.purpose}</dd></div>
+                <div><dt>보유 기간</dt><dd>${q.privacy.retention}</dd></div>
+                <div><dt>처리 위탁</dt><dd>${q.privacy.processor}</dd></div>
+                <div><dt>국외 처리</dt><dd>${q.privacy.overseas}</dd></div>
+              </dl>
+              <p>동의하지 않을 권리가 있으며, 동의하지 않으면 온라인 상담 신청을 이용할 수 없습니다. 전화 상담은 <a href="tel:${f.phone}">${f.phone}</a>으로 가능합니다.</p>
+              <a class="qf-policy-link" href="${q.privacy.policyHref}" target="_blank" rel="noopener">개인정보처리방침 전문 보기 ↗</a>
+            </details>
+          </div>
           <button type="submit" class="btn btn-primary qf-submit" id="qf-submit-btn">문의 보내기</button>
           <ul class="qf-trust">
             ${q.trustNotes.map(t => `<li>${t}</li>`).join('')}
@@ -767,6 +797,19 @@ async function handleQuickFormSubmit(e) {
   const btn = document.getElementById('qf-submit-btn');
   const q = SITE.quickForm;
   const originalLabel = btn.textContent;
+  const consent = form.querySelector('input[name="privacyConsent"]');
+  const overseasConsent = form.querySelector('input[name="overseasTransferConsent"]');
+
+  if (!consent || !consent.checked) {
+    alert('상담 신청을 위해 개인정보 수집·이용 동의가 필요합니다.');
+    if (consent) consent.focus();
+    return;
+  }
+  if (!overseasConsent || !overseasConsent.checked) {
+    alert('상담 신청을 위해 개인정보의 국외 이전·처리 동의가 필요합니다.');
+    if (overseasConsent) overseasConsent.focus();
+    return;
+  }
 
   if (q.formspreeId === 'YOUR_FORM_ID') {
     console.warn('[자림인포시스템(주)] Formspree ID가 아직 설정되지 않았습니다. js/site-data.js의 quickForm.formspreeId를 실제 발급받은 ID로 교체해주세요.');

@@ -21,6 +21,11 @@ const SITE = {
     partnerLogo: 'https://ipecs.co.kr/wp-content/uploads/2026/05/IPECS_LOGO-4.png'
   },
 
+  footer: {
+    copyrightNotice: '본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.',
+    safetyNotice: '상담 신청 정보는 상담 목적에 한해 처리합니다. 본 사이트는 HTTPS로 제공되며, 외부 링크 이용 시 해당 서비스 운영자의 정책이 적용됩니다.'
+  },
+
   /* ---------------------------------------------------------------
      2. 상단 메뉴 (내비게이션)
      --------------------------------------------------------------- */
@@ -62,7 +67,7 @@ const SITE = {
      --------------------------------------------------------------- */
   kakaoTalk: {
     label: '카카오톡상담',
-    url: 'http://pf.kakao.com/_xaxdxlSX',
+    url: 'https://pf.kakao.com/_xaxdxlSX',
   },
 
   quickForm: {
@@ -70,6 +75,15 @@ const SITE = {
     desc: '아래 정보만 남겨주시면 담당 엔지니어가 직접 연락드립니다.',
     interestOptions: ['iPECS UCM (대용량)', 'iPECS UCP (중소용량)', 'iPECS eMG100 (소용량)', '단말기/전화기 문의', '네트워크 스위치 문의', '기타/잘 모르겠음'],
     trustNotes: ['보통 2시간 이내에 답변드립니다', '입력하신 정보는 상담 목적으로만 사용되며 안전하게 보호됩니다'],
+    privacy: {
+      title: '개인정보 수집·이용 안내',
+      items: '성함, 연락처, 관심 서비스, 문의 내용',
+      purpose: '제품·기술 상담 및 견적 안내',
+      retention: '상담 처리 완료 후 지체 없이 삭제. Formspree 제출 이력은 사용 플랜·설정에 따른 보관기간이 적용됩니다.',
+      processor: 'Formspree, Inc. (문의 접수·전송 서비스)',
+      overseas: 'Formspree, Inc. (미국 AWS 호스팅)로 상담 정보가 전송·처리됩니다.',
+      policyHref: 'privacy.html'
+    },
     successTitle: '문의가 접수되었습니다',
     successDesc: '빠른 시일 내 담당자가 남겨주신 연락처로 연락드리겠습니다.',
     formspreeId: 'mdaqrbpn',
@@ -229,6 +243,7 @@ const SITE = {
         label: '공식수리센터',
         name: 'iPECS 공식수리센터',
         href: 'http://elg-kpsvc.co.kr/',
+        note: '공식수리센터의 HTTPS 인증서 정상화 후 HTTPS로 교체',
         icon: 'repair',
       },
     ],
