@@ -831,11 +831,11 @@ button { font-family: inherit; cursor: pointer; }
 .footer-address { margin-top: 2px; }
 .footer-policy-group { flex: 0 0 auto; padding-top: 26px; }
 .footer-policy-nav { display: flex; justify-content: flex-end; gap: 18px; flex-wrap: wrap; }
-.footer-policy-nav a { color: rgba(255,255,255,0.84); font-size: 15px; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.footer-policy-nav a { color: rgba(255,255,255,0.92); font-size: 17px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 .footer-policy-nav a:hover { color: var(--white); }
-.footer-row--bottom { align-items: baseline; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.16); }
+.footer-row--bottom { display: block; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.16); }
 .footer-copyright-notice { margin: 0; color: rgba(255,255,255,0.62); font-size: 14px; line-height: 1.5; }
-.footer-copy { margin: 0; color: rgba(255,255,255,0.52); font-size: 14px; line-height: 1.5; text-align: right; }
+.footer-copy { margin: 7px 0 0; color: rgba(255,255,255,0.52); font-size: 14px; line-height: 1.5; text-align: left; }
 
 /* -------------------- 반응형 -------------------- */
 @media (max-width: 900px) {
@@ -850,7 +850,7 @@ button { font-family: inherit; cursor: pointer; }
   .footer-meta-line { gap: 3px 12px; font-size: 14px; }
   .footer-policy-group { padding-top: 10px; }
   .footer-policy-nav { justify-content: flex-start; gap: 12px 16px; }
-  .footer-policy-nav a { font-size: 14px; }
+  .footer-policy-nav a { font-size: 16px; font-weight: 700; }
   .footer-row--bottom { display: block; }
   .footer-copy { margin-top: 7px; text-align: left; }
   .header-cta { display: none; }
