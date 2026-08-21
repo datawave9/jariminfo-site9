@@ -845,7 +845,7 @@ function showQuickFormSuccess() {
   });
 }
 
-/* ---------- 공통: 모바일 하단 고정 바 (전화 + 카카오톡상담) ---------- */
+/* ---------- 공통: 모바일 하단 고정 바 (전화 + 카카오톡 상담) ---------- */
 function renderMobileStickyBar() {
   const f = SITE.floatingCta;
   const k = SITE.kakaoTalk;
