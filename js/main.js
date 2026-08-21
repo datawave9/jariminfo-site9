@@ -54,27 +54,35 @@ function renderFooter() {
   const footerPolicyNav = `<a href="privacy.html">개인정보처리방침</a><a href="email-collection-refusal.html">이메일무단수집거부</a><a href="safety.html">안전·윤리·인권 선언</a>`;
 
   mount.innerHTML = `
-    <footer class="site-footer">
+    <footer class="site-footer site-footer--horizontal">
       <div class="wrap">
-        <div class="footer-top">
+        <div class="footer-row footer-row--top">
           <div class="footer-brand">자림인포시스템<span class="dot">(주)</span></div>
           <nav class="footer-nav footer-nav--primary" aria-label="주요 메뉴">${footerMainNav}</nav>
         </div>
-        <div class="footer-info-row">
-          <div class="footer-company">
-            <div class="footer-meta footer-meta--compact">
+        
+        <div class="footer-row footer-row--mid">
+          <div class="footer-info-group">
+            <div class="footer-meta-line">
               <span>대표이사 ${c.ceo}</span>
               <span>사업자등록번호 ${c.bizNo}</span>
               <span>대표번호 ${c.tel}</span>
+            </div>
+            <div class="footer-meta-line">
               <span>이메일 ${c.email}</span>
               <span>${c.hours}</span>
             </div>
-            <div class="footer-meta footer-meta--compact footer-address"><span>${c.address}</span></div>
+            <div class="footer-meta-line footer-address">
+              <span>${c.address}</span>
+            </div>
+          </div>
+          <div class="footer-policy-group">
+            <nav class="footer-policy-nav" aria-label="정책 및 고지">${footerPolicyNav}</nav>
           </div>
         </div>
-        <div class="footer-bottom">
+
+        <div class="footer-row footer-row--bottom">
           <p class="footer-copyright-notice">${f.copyrightNotice}</p>
-          <nav class="footer-policy-nav" aria-label="정책 및 고지">${footerPolicyNav}</nav>
           <div class="footer-copy">© ${c.copyrightYear} ${c.name}. All Rights Reserved. · 취급 브랜드 iPECS(舊 에릭슨엘지 엔터프라이즈)는 각 사의 상표입니다.</div>
         </div>
       </div>
