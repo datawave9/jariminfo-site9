@@ -718,7 +718,6 @@ function renderFloatingCtaAndModal() {
       </button>
       <div id="qf-body">
         <h3 id="qf-title">${q.title}</h3>
-        <p class="qf-desc">${q.desc}</p>
         <form id="qf-form">
           <div class="qf-field">
             <label>성함 <span>*</span></label>
@@ -739,13 +738,13 @@ function renderFloatingCtaAndModal() {
             <textarea name="message" rows="3" placeholder="설치 규모, 희망 시기 등을 남겨주시면 더 정확한 상담이 가능합니다"></textarea>
           </div>
           <div class="qf-privacy-box">
-            <label class="qf-consent">
-              <input type="checkbox" name="privacyConsent" value="yes" required>
-              <span><strong>[필수]</strong> ${q.privacy.consentLabel}</span>
-            </label>
-            <p class="qf-privacy-summary">${q.privacy.summary}</p>
-            <details class="qf-privacy-details">
-              <summary>개인정보 처리 내용 자세히 보기</summary>
+            <div class="qf-consent-row">
+              <label class="qf-consent">
+                <input type="checkbox" name="privacyConsent" value="yes" required>
+                <span><strong>[필수]</strong> ${q.privacy.consentLabel}</span>
+              </label>
+              <details class="qf-privacy-details">
+                <summary>자세히 보기</summary>
               <dl>
                 <div><dt>수집 항목</dt><dd>${q.privacy.items}</dd></div>
                 <div><dt>수집 목적</dt><dd>${q.privacy.purpose}</dd></div>
@@ -754,8 +753,9 @@ function renderFloatingCtaAndModal() {
                 <div><dt>처리 안내</dt><dd>${q.privacy.overseas}</dd></div>
               </dl>
               <p>상담 접수 과정에서 Formspree, Inc.의 미국 AWS 인프라를 통해 개인정보가 처리될 수 있습니다. 동의하지 않을 권리가 있으며, 동의하지 않으면 온라인 상담 신청을 이용할 수 없습니다. 전화 상담은 <a href="tel:${f.phone}">${f.phone}</a>으로 가능합니다.</p>
-              <a class="qf-policy-link" href="${q.privacy.policyHref}" target="_blank" rel="noopener">개인정보처리방침 전문 보기 ↗</a>
-            </details>
+                <a class="qf-policy-link" href="${q.privacy.policyHref}" target="_blank" rel="noopener">개인정보처리방침 전문 보기 ↗</a>
+              </details>
+            </div>
           </div>
           <button type="submit" class="btn btn-primary qf-submit" id="qf-submit-btn">문의 보내기</button>
           <ul class="qf-trust">
