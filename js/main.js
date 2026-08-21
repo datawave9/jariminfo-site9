@@ -57,28 +57,26 @@ function renderFooter() {
     <footer class="site-footer">
       <div class="wrap">
         <div class="footer-top">
+          <div class="footer-brand">자림인포시스템<span class="dot">(주)</span></div>
+          <nav class="footer-nav footer-nav--primary" aria-label="주요 메뉴">${footerMainNav}</nav>
+        </div>
+        <div class="footer-info-row">
           <div class="footer-company">
-            <div class="footer-brand">자림인포시스템<span class="dot">(주)</span></div>
-            <div class="footer-meta">
+            <div class="footer-meta footer-meta--compact">
               <span>대표이사 ${c.ceo}</span>
               <span>사업자등록번호 ${c.bizNo}</span>
-            </div>
-            <div class="footer-meta">
-              <span>${c.address}</span>
-            </div>
-            <div class="footer-meta">
               <span>대표번호 ${c.tel}</span>
               <span>이메일 ${c.email}</span>
               <span>${c.hours}</span>
             </div>
+            <div class="footer-meta footer-meta--compact footer-address"><span>${c.address}</span></div>
           </div>
-          <nav class="footer-nav footer-nav--primary" aria-label="주요 메뉴">${footerMainNav}</nav>
-        </div>
-        <div class="footer-policies">
           <nav class="footer-policy-nav" aria-label="정책 및 고지">${footerPolicyNav}</nav>
-          <p class="footer-copyright-notice">${f.copyrightNotice}</p>
         </div>
-        <div class="footer-copy">© ${c.copyrightYear} ${c.name}. All Rights Reserved. · 취급 브랜드 iPECS(舊 에릭슨엘지 엔터프라이즈)는 각 사의 상표입니다.</div>
+        <div class="footer-bottom">
+          <p class="footer-copyright-notice">${f.copyrightNotice}</p>
+          <div class="footer-copy">© ${c.copyrightYear} ${c.name}. All Rights Reserved. · 취급 브랜드 iPECS(舊 에릭슨엘지 엔터프라이즈)는 각 사의 상표입니다.</div>
+        </div>
       </div>
     </footer>
   `;
