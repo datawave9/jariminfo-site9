@@ -42,11 +42,11 @@
      이 방식을 기준으로 되어 있습니다.
 
 [수정 사항을 실제 홈페이지에 반영하는 방법 — 공통]
-현재 홈페이지는 GitHub 저장소(datawave9/jariminfo-site5)의 내용이
+현재 홈페이지는 GitHub 저장소(datawave9/jariminfo-site)의 내용이
 그대로 화면에 보이는 방식(GitHub Pages)으로 운영되고 있습니다.
 
  방법 A. 파일 하나의 내용만 고칠 때 (문구 수정 등 대부분의 경우)
-  1) https://github.com/datawave9/jariminfo-site5 접속
+  1) https://github.com/datawave9/jariminfo-site9 접속
   2) 수정할 파일(예: js/site-data.js) 클릭
   3) 화면 오른쪽 위 연필 아이콘(Edit this file) 클릭
   4) 내용 수정
