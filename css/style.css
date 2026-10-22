@@ -24,7 +24,11 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -35,6 +39,8 @@ body {
   -webkit-font-smoothing: antialiased;
   word-break: keep-all;
   overflow-wrap: break-word;
+  overflow-x: hidden;
+  width: 100%;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -327,12 +333,11 @@ button { font-family: inherit; cursor: pointer; }
 }
 .pcard:hover .pcard-more { opacity: 1; transform: translateX(0); }
 .pcard-img {
-  height: 140px;
+  height: 155px;
   margin: -26px -26px 20px;
   border-radius: 14px 14px 0 0;
-  background: linear-gradient(100deg, var(--paper) 40%, var(--line-2) 50%, var(--paper) 60%);
-  background-size: 220% 100%;
-  animation: img-shimmer 1.6s ease-in-out infinite;
+  background: radial-gradient(circle at center, #ffffff 45%, #f4f6fa 100%);
+  background-size: 100% 100%;
   border-bottom: 1px solid var(--line-2);
   display: flex;
   align-items: center;
@@ -341,6 +346,7 @@ button { font-family: inherit; cursor: pointer; }
   opacity: 0;
   transform: translateY(10px);
   transition: opacity .6s ease, transform .6s cubic-bezier(.16,1,.3,1);
+  padding: 12px;
 }
 .pcard-img.in-view {
   opacity: 1;
@@ -348,7 +354,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .pcard-img.img-ready {
   animation: float-soft 5.5s ease-in-out infinite;
-  background: var(--paper);
+  background: radial-gradient(circle at center, #ffffff 45%, #f4f6fa 100%);
 }
 .pcard:nth-child(2) .pcard-img.img-ready { animation-delay: .3s; }
 .pcard:nth-child(3) .pcard-img.img-ready { animation-delay: .6s; }
@@ -356,15 +362,17 @@ button { font-family: inherit; cursor: pointer; }
 .pcard:nth-child(5) .pcard-img.img-ready { animation-delay: 1.2s; }
 .pcard:nth-child(6) .pcard-img.img-ready { animation-delay: 1.5s; }
 .pcard-img img {
-  max-height: 100px;
-  max-width: 80%;
+  max-height: 115px;
+  max-width: 85%;
   object-fit: contain;
   opacity: 0;
-  transform: scale(1.08);
+  transform: scale(1.05);
+  mix-blend-mode: multiply;
+  filter: contrast(1.04) brightness(0.99);
   transition: opacity .5s ease, transform .5s cubic-bezier(.16,1,.3,1);
 }
 .pcard-img img.loaded { opacity: 1; transform: scale(1); }
-.pcard:hover .pcard-img img.loaded { transform: scale(1.1) rotate(-1deg); }
+.pcard:hover .pcard-img img.loaded { transform: scale(1.08) rotate(-1deg); }
 
 @keyframes img-shimmer {
   0% { background-position: 140% 0; }
@@ -561,9 +569,8 @@ button { font-family: inherit; cursor: pointer; }
 .product-detail-img {
   height: 200px;
   border-radius: 12px;
-  background: linear-gradient(100deg, var(--paper) 40%, var(--line-2) 50%, var(--paper) 60%);
-  background-size: 220% 100%;
-  animation: img-shimmer 1.6s ease-in-out infinite;
+  background: radial-gradient(circle at center, #ffffff 45%, #f4f6fa 100%);
+  background-size: 100% 100%;
   border: 1px solid var(--line-2);
   display: flex;
   align-items: center;
@@ -574,6 +581,7 @@ button { font-family: inherit; cursor: pointer; }
   opacity: 0;
   transform: translateY(10px) scale(.97);
   transition: opacity .6s ease, transform .6s cubic-bezier(.16,1,.3,1);
+  padding: 14px;
 }
 .product-detail-img.in-view {
   opacity: 1;
@@ -581,12 +589,14 @@ button { font-family: inherit; cursor: pointer; }
 }
 .product-detail-img.img-ready {
   animation: float-soft 6s ease-in-out infinite;
-  background: var(--paper);
+  background: radial-gradient(circle at center, #ffffff 45%, #f4f6fa 100%);
 }
 .product-detail-img img {
   max-height: 160px;
   max-width: 85%;
   object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: contrast(1.04) brightness(0.99);
   opacity: 0;
   transform: scale(1.1);
   transition: opacity .5s ease, transform .6s cubic-bezier(.16,1,.3,1);
@@ -952,12 +962,309 @@ button { font-family: inherit; cursor: pointer; }
 
 /* -------------------- 반응형 추가 -------------------- */
 @media (max-width: 900px) {
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line-2); }
   .process-rail { grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
   .process-rail::before { display: none; }
   .diff-grid { grid-template-columns: repeat(2, 1fr); }
   .compare-row { grid-template-columns: 1fr; gap: 4px; }
   .compare-row > div::before { content: attr(data-label); display: block; font-size: 10.5px; color: var(--steel); font-weight: 700; margin-bottom: 2px; }
   .compare-row--head { display: none; }
+}
+
+/* -------------------- 스마트폰 최적화 반응형 (max-width: 640px) -------------------- */
+@media (max-width: 640px) {
+  /* 1. 헤더: 모바일 컴팩트 높이 & 영문 긴 문구 숨김으로 가로 넘침 및 틀어짐 원천 차단 */
+  .site-header .wrap {
+    height: 60px;
+    padding: 0 16px;
+  }
+  .brand {
+    font-size: 16px;
+    gap: 8px;
+  }
+  .brand-logo {
+    height: 22px;
+  }
+  .brand .brand-en {
+    display: none; /* 모바일에서 폭 부족으로 인한 헤더 깨짐 방지 */
+  }
+  .nav-toggle {
+    width: 38px;
+    height: 38px;
+  }
+  .main-nav {
+    inset: 60px 0 auto 0;
+    z-index: 100;
+    padding: 16px 20px;
+    box-shadow: 0 16px 32px rgba(16,25,43,0.14);
+  }
+
+  /* 2. 공통 컨테이너 여백 및 타이포 */
+  .wrap {
+    padding: 0 16px;
+  }
+  .section {
+    padding: 48px 0;
+  }
+  .section-tight {
+    padding: 36px 0;
+  }
+  .section-head {
+    margin-bottom: 28px;
+  }
+  .section-head h2 {
+    font-size: 23px;
+  }
+  .section-head p {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  /* 3. 히어로 영역 */
+  .hero {
+    padding: 44px 0 36px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    padding: 5px 11px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+  .hero p.desc {
+    font-size: 14.5px;
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+  .hero-cta {
+    margin-top: 24px;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .hero-cta .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 14px;
+  }
+
+  /* 4. 상태판(스탯바) - 여백 축소 및 폰트 넘침 해결 */
+  .statbar {
+    margin-top: 36px;
+    border-radius: 12px;
+  }
+  .stat {
+    padding: 14px 12px;
+  }
+  .stat:nth-child(n+3) {
+    border-top: 1px solid var(--line-2);
+  }
+  .stat .stat-value {
+    font-size: 20px;
+  }
+  .stat .stat-value .unit {
+    font-size: 11.5px;
+  }
+  .stat .stat-label {
+    font-size: 11px;
+    margin-top: 4px;
+  }
+
+  /* 5. 홈 제품 카드(pcard) - 여백 최적화 및 모바일 링크 항상 표시 */
+  .pcard {
+    padding: 18px 16px;
+    border-radius: 12px;
+  }
+  .pcard-img {
+    height: 140px;
+    margin: -18px -16px 14px;
+    padding: 10px;
+  }
+  .pcard-img img {
+    max-height: 105px;
+  }
+  .pcard h3 {
+    font-size: 16.5px;
+    margin-top: 10px;
+  }
+  .pcard p {
+    font-size: 13px;
+    margin-top: 6px;
+    line-height: 1.55;
+  }
+  .pcard-more {
+    opacity: 1; /* 모바일 터치 환경에서 바로 보이도록 설정 */
+    transform: none;
+    margin-top: 12px;
+  }
+
+  /* 6. 제품소개 상세 (product-detail) & 스펙 테이블 */
+  .product-detail {
+    padding: 20px 16px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    gap: 16px;
+  }
+  .product-detail-img {
+    height: 170px;
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+  .product-detail-img img {
+    max-height: 140px;
+  }
+  .product-detail h3 {
+    font-size: 20px;
+    margin-top: 6px;
+  }
+  .product-detail .tagline {
+    font-size: 13.5px;
+  }
+  .product-detail .desc {
+    font-size: 13.5px;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+  .spec-table {
+    margin-top: 18px;
+  }
+  .spec-row {
+    grid-template-columns: 1fr; /* 74px 강제 압축 해제 -> 모바일 전용 수직 스택 */
+    gap: 3px;
+    padding: 10px 0;
+  }
+  .spec-row .k {
+    font-size: 12px;
+    color: var(--navy);
+  }
+  .spec-row .v {
+    font-size: 13.5px;
+  }
+  .product-detail-cta {
+    width: 100%;
+    justify-content: center;
+    margin-top: 16px;
+    padding: 12px;
+  }
+
+  /* 7. 프로세스 레일 - 모바일 세로 1열 흐름 */
+  .process-rail {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+  .process-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 0;
+  }
+  .process-step__no {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    font-size: 13.5px;
+    margin-bottom: 0;
+  }
+  .process-step h4 {
+    font-size: 14.5px;
+    margin-bottom: 4px;
+  }
+  .process-step p {
+    font-size: 12.5px;
+  }
+
+  /* 8. 차별점(Why Us) & 팩트 카드 1열 변환 */
+  .diff-grid, .fact-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .diff-card, .fact-card {
+    padding: 20px 18px;
+  }
+
+  /* 9. 브랜드 사명변경 안내 배너 */
+  .brand-notice {
+    padding: 22px 18px;
+    gap: 16px;
+  }
+  .brand-notice .badge-col {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* 10. 하단 CTA 배너 */
+  .cta-band {
+    padding: 30px 20px;
+    border-radius: 16px;
+    gap: 16px;
+  }
+  .cta-band h3 {
+    font-size: 20px;
+  }
+  .cta-band p {
+    font-size: 13.5px;
+  }
+  .cta-band .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 11. 문의/고객지원 페이지 */
+  .info-card {
+    padding: 20px 16px;
+  }
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+    padding: 10px 0;
+  }
+  .directions-card {
+    padding: 18px 14px;
+  }
+  .directions-actions .btn {
+    flex: 1 1 calc(50% - 6px);
+    justify-content: center;
+    text-align: center;
+    padding: 10px 8px;
+    font-size: 12.5px;
+  }
+
+  /* 12. 회사소개 페이지 */
+  .achv-row {
+    grid-template-columns: 60px 1fr;
+    gap: 12px;
+    padding: 12px 0;
+    font-size: 13.5px;
+  }
+}
+
+/* -------------------- 초소형 스마트폰 (max-width: 380px) -------------------- */
+@media (max-width: 380px) {
+  .site-header .wrap {
+    padding: 0 12px;
+  }
+  .brand {
+    font-size: 15px;
+  }
+  .brand-logo {
+    height: 20px;
+  }
+  .statbar {
+    grid-template-columns: 1fr;
+  }
+  .stat {
+    border-left: none !important;
+    border-top: 1px solid var(--line-2);
+  }
+  .stat:first-child {
+    border-top: none;
+  }
+  .directions-actions .btn {
+    flex: 1 1 100%;
+  }
 }
 
 /* =====================================================================
